@@ -1,3 +1,13 @@
+:root {
+  --butter: #faf8e3;
+  --marzipan: #eecd8e;
+  --di-sierra: #D39C51;
+  --leather: #9B7C54;
+  --copper-rose: #956E65;
+  --tamarind: #301513;
+  --rye: #7B3C25
+}
+
 .App {
   text-align: center;
 }

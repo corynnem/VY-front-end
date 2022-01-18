@@ -1,23 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import Auth from "./Auth/Auth";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Create from './Main/CreateVenue'
+import Navigation from "./Main/Nav/Nav";
+import Welcome from './Main/Home'
+import "./App.css";
+
 
 function App() {
+  const [token, setToken] = useState(true);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     
+      {token === undefined ? (
+        <Auth token={token} setToken={setToken} />
+      ) : (
+        <div>
+           
+          <BrowserRouter>
+          <Navigation/>
+            <Routes>
+              <Route path="/" element={<Welcome/>} />
+              <Route path="create" element={<Create/>} />
+              {/* <Route path="applications" element={} /> */}
+              {/* <Route path="contact" element={} /> */}
+            </Routes>
+          </BrowserRouter>
+        </div>
+      )}
     </div>
   );
 }
